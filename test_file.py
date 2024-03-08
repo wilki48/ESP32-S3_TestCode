@@ -4,4 +4,4 @@ print('Hello World')
 
 print("this is another line for ota testing")
 
-print('Update to new branch main')  
+print('Update - remove version file')  
