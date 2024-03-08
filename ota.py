@@ -3,7 +3,7 @@ import urequests
 import os
 import json
 import machine
-from time import sleep
+from time import sleep 
 
 class OTAUpdater:
     """ This class handles OTA updates. It connects to the Wi-Fi, checks for updates, downloads and installs them.
