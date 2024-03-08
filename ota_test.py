@@ -4,7 +4,7 @@ from ota import OTAUpdater
 SSID = 'GC_Star24'
 PASSWORD = 'Misty911!'
 
-firmware_url = "https://raw.githubusercontent.com/wilki48/test_ota/main/"
+firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
 
 ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "test_file.py")
 

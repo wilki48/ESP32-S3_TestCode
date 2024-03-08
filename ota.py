@@ -6,7 +6,8 @@ import machine
 from time import sleep
 
 class OTAUpdater:
-    """ This class handles OTA updates. It connects to the Wi-Fi, checks for updates, downloads and installs them."""
+    """ This class handles OTA updates. It connects to the Wi-Fi, checks for updates, downloads and installs them.
+    Branch must be names main in github"""
     def __init__(self, ssid, password, repo_url, filename):
         self.filename = filename
         self.ssid = ssid
@@ -16,14 +17,16 @@ class OTAUpdater:
         # self.version_url = repo_url + 'main/version.json'                 # Replacement of the version mechanism by Github's oid
         self.version_url = self.process_version_url(repo_url, filename)     # Process the new version url
         self.firmware_url = repo_url + filename                             # Removal of the 'main' branch to allow different sources
-
+        print(f'self.firmware_url: {self.firmware_url}')
         # get the current version (stored in version.json)
-        if 'version.json' in os.listdir():    
+        if 'version.json' in os.listdir():
+            print('Found version.json file')
             with open('version.json') as f:
                 self.current_version = json.load(f)['version']
             print(f"Current file version is '{self.current_version}'")
 
         else:
+            print('Creating version.json file')
             self.current_version = "0"
             # save the current version
             with open('version.json', 'w') as f:
@@ -123,7 +126,6 @@ class OTAUpdater:
         # Connect to Wi-Fi
         self.connect_wifi()
 
-        print('Checking for latest version...')
         headers = {"accept": "application/json"} 
         response = urequests.get(self.version_url, headers=headers)
         
