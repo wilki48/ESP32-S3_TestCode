@@ -3,7 +3,7 @@ import gc
 
 from lib.wifi_connect import MyWifiClass
 from lib.networkTime import NtpTimeClass
-from secrets.wifi_config import SSID, PW
+from secrets.wifi_config import SSID, PASSWORD
 
 wifi = None
 ntp = None
@@ -15,7 +15,7 @@ def setupNetwork():
     #SSID = 'GC_Star24'
     #PW = 'Misty911!'
     
-    wifi = MyWifiClass(SSID, PW)
+    wifi = MyWifiClass(SSID, PASSWORD)
     wifi.do_connect()
     
     print('wifi strength: ', wifi.wifi_strength())
