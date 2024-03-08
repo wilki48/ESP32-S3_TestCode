@@ -90,7 +90,6 @@ class OTAUpdater:
         with open('latest_code.py', 'w') as f:
            # print('Latest code py: ', self.latest_code)
             result = f.write(self.latest_code)
-            print(f'f.write result: {result}')
         
         # update the version in memory
         self.current_version = self.latest_version
