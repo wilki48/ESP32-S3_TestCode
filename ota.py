@@ -37,13 +37,13 @@ class OTAUpdater:
 
         # Necessary URL manipulations
         version_url = repo_url.replace("raw.githubusercontent.com", "github.com")  # Change the domain
-        print('version url 1: ', version_url)
+        #print('version url 1: ', version_url)
         version_url = version_url.replace("/", "§", 4)                             # Temporary change for upcoming replace
-        print('version url 2: ', version_url)
+        #print('version url 2: ', version_url)
         version_url = version_url.replace("/", "/latest-commit/", 1)               # Replacing for latest commit
-        print('version url 3: ', version_url)
+        #print('version url 3: ', version_url)
         version_url = version_url.replace("§", "/", 4)                             # Rollback Temporary change
-        print('version url 4: ', version_url)
+        #print('version url 4: ', version_url)
         version_url = version_url + filename                                       # Add the targeted filename
         
         print('version url: ', version_url)
@@ -73,7 +73,7 @@ class OTAUpdater:
         # Fetch the latest code from the repo.
         response = urequests.get(self.firmware_url)
         if response.status_code == 200:
-            print(f'Fetched latest firmware code, status: {response.status_code}, -  {response.text}')
+          #  print(f'Fetched latest firmware code, status: {response.status_code}, -  {response.text}')
     
             # Save the fetched code to memory
             self.latest_code = response.text
@@ -88,7 +88,7 @@ class OTAUpdater:
 
         # Save the fetched code and update the version file to latest version.
         with open('latest_code.py', 'w') as f:
-            print('Latest code py: ', self.latest_code)
+           # print('Latest code py: ', self.latest_code)
             result = f.write(self.latest_code)
             print(f'f.write result: {result}')
         
@@ -103,14 +103,12 @@ class OTAUpdater:
         self.latest_code = None
 
         # Overwrite the old code.
-        result = os.rename('latest_code.py', self.filename)
-        print(f'1 rename result: {result}')
+        os.rename('latest_code.py', self.filename)
 
     def update_and_reset(self):
         """ Update the code and reset the device."""
 
         print('Updating device...')
-        print(f'Renaming latest_code.py to {self.filename}')
 
         # Overwrite the old code.
       #  result = os.rename('latest_code.py', self.filename)
@@ -137,8 +135,8 @@ class OTAUpdater:
         
         # compare versions
         newer_version_available = True if self.current_version != self.latest_version else False
-        
-        print(f'Newer version available: {newer_version_available}')    
+        print(f'Newer version available: {newer_version_available}')
+         
         return newer_version_available
     
     def download_and_install_update_if_available(self):
