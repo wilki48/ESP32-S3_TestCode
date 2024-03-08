@@ -56,7 +56,6 @@ class OTAUpdater:
         sta_if = network.WLAN(network.STA_IF)
         if sta_if.isconnected():
             print('Already connected to wifi...')
-            print(f'Connected to WiFi, IP is: {sta_if.ifconfig()[0]}')
             return
         
         print('connecting...')
@@ -72,9 +71,7 @@ class OTAUpdater:
         
         # Fetch the latest code from the repo.
         response = urequests.get(self.firmware_url)
-        if response.status_code == 200:
-          #  print(f'Fetched latest firmware code, status: {response.status_code}, -  {response.text}')
-    
+        if response.status_code == 200:    
             # Save the fetched code to memory
             self.latest_code = response.text
             return True
@@ -88,7 +85,6 @@ class OTAUpdater:
 
         # Save the fetched code and update the version file to latest version.
         with open('latest_code.py', 'w') as f:
-           # print('Latest code py: ', self.latest_code)
             result = f.write(self.latest_code)
         
         # update the version in memory
@@ -102,13 +98,14 @@ class OTAUpdater:
         self.latest_code = None
 
         # Overwrite the old code.
+        print(f'filename: {self.filename}')
         os.rename('latest_code.py', self.filename)
 
     def update_and_reset(self):
         """ Update the code and reset the device."""
 
         print('Updating device...')
-
+        print(f'filename: {self.filename}')
         # Overwrite the old code.
         os.rename('latest_code.py', self.filename)
 
