@@ -110,10 +110,11 @@ class OTAUpdater:
         """ Update the code and reset the device."""
 
         print('Updating device...')
+        print(f'Renaming latest_code.py to {self.filename}')
 
         # Overwrite the old code.
-        result = os.rename('latest_code.py', self.filename)
-        print(f'2 rename result: {result}')
+      #  result = os.rename('latest_code.py', self.filename)
+      #  print(f'2 rename result: {result}')
 
         # Restart the device to run the new code.
         print("Restarting device...")

@@ -38,17 +38,21 @@ def get_mem_info():
     
     print('Flash size: ', flashSize)
     print('Free memory: ', memFree)
+
+def checkForUpdates():
+    firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
+
+    ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "test_file.py")
+
+    ota_updater.download_and_install_update_if_available()
     
 if __name__ == "__main__":
     try:
         setupNetwork()
         #get_ntp_time()
         get_mem_info()
+        checkForUpdates()
         
-        import ota_test
-        
-        print('Importing test_file >>>>')
-        import test_file
         
     except KeyboardInterrupt:
         print("Keyboard interrupt ctrl-c")
