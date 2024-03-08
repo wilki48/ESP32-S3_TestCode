@@ -12,9 +12,6 @@ ntp = None
 def setupNetwork():
     global wifi
     
-    #SSID = 'GC_Star24'
-    #PW = 'Misty911!'
-    
     wifi = MyWifiClass(SSID, PASSWORD)
     wifi.do_connect()
     
@@ -44,7 +41,7 @@ def checkForUpdates():
     
     firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
 
-    ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "test_file.py")
+    ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
 
     ota_updater.download_and_install_update_if_available()
     
