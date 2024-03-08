@@ -40,6 +40,8 @@ def get_mem_info():
     print('Free memory: ', memFree)
 
 def checkForUpdates():
+    from ota import OTAUpdater
+    
     firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
 
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "test_file.py")
