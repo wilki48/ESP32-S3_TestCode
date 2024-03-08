@@ -1,4 +1,4 @@
-# Adding a change to force ota update 2x
+# Adding a change to force ota update 3x
 
 import esp
 import gc
@@ -42,9 +42,11 @@ def checkForUpdates():
     from ota import OTAUpdater
     
     firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
-
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
-
+    ota_updater.download_and_install_update_if_available()
+    
+    firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
+    ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "ota.py")
     ota_updater.download_and_install_update_if_available()
     
 if __name__ == "__main__":
