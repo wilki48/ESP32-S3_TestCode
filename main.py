@@ -1,4 +1,4 @@
-# Adding a change to force ota update 4x 
+# Adding a change to force ota update 5x 
 
 import esp
 import gc
@@ -41,9 +41,9 @@ def get_mem_info():
 def checkForUpdates():
     from ota import OTAUpdater
     
-    firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
-    ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
-    ota_updater.download_and_install_update_if_available()
+    #firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
+    #ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
+    #ota_updater.download_and_install_update_if_available()
     
     firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "ota.py")
