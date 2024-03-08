@@ -34,7 +34,7 @@ def get_mem_info():
     memFree = gc.mem_free()
     
     print('Flash size: ', flashSize)
-    print('Free memory: ', memFree)
+    print('Free memory: ', memFree) 
 
 def checkForUpdates():
     from ota import OTAUpdater
