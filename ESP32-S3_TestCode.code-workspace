@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"name": "esp32-S3_TestCode",
+			"path": "."
+		},
+		{
+			"name": "serial:/COM10",
+			"uri": "serial://com10/"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5502,
+		"liveServer.settings.multiRootWorkspaceName": "esp32-s3",
+		"python.languageServer": "None",
+		"python.linting.pylintEnabled": false,
+		"python.analysis.diagnosticSeverityOverrides": {
+			"reportMissingModuleSource": "none"
+		},
+		"python.analysis.extraPaths": [
+			""
+		],
+		"circuitpython.board.version": null,
+		"python.analysis.stubPath": "\"C:\\Development\\Tools\\stubs\"",
+		"python.analysis.typeCheckingMode": "basic",
+		"python.analysis.autoImportCompletions": true
+	}
+}
