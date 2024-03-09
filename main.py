@@ -2,6 +2,8 @@
 
 import esp
 import gc
+import machine
+from time import sleep
 
 from lib.wifi_connect import MyWifiClass
 from lib.networkTime import NtpTimeClass
