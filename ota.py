@@ -83,6 +83,7 @@ class OTAUpdater:
     def update_no_reset(self):
         """ Update the code without resetting the device."""
 
+        print('Udate no reset')
         # Save the fetched code and update the version file to latest version.
         with open('latest_code.py', 'w') as f:
             result = f.write(self.latest_code)
@@ -104,13 +105,13 @@ class OTAUpdater:
     def update_and_reset(self):
         """ Update the code and reset the device."""
 
-        print('Updating device...')
+        print('Updating and reset device...')
         print(f'filename: {self.filename}')
         # Overwrite the old code.
         #os.rename('latest_code.py', self.filename)
 
         # Restart the device to run the new code.
-        print("Restarting device...")
+        print("Restarting device after update and reset...")
         sleep(0.25)
         machine.reset()  # Reset the device to run the new code.
         
