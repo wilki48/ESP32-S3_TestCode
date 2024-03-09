@@ -41,10 +41,12 @@ def get_mem_info():
 def checkForUpdates():
     from ota import OTAUpdater
     
+    print('\nUPDATING main.py')
     firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
     ota_updater.download_and_install_update_if_available()
     
+    print('\nUPDATING ota.py')
     firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "ota.py")
     ota_updater.download_and_install_update_if_available()
