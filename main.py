@@ -51,6 +51,9 @@ def checkForUpdates():
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "ota.py")
     ota_updater.download_and_install_update_if_available()
     
+    sleep(0.25)
+    machine.reset()  # Reset the device to run the new code.
+    
 if __name__ == "__main__":
     try:
         setupNetwork()
