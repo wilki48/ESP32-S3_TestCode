@@ -94,8 +94,8 @@ class OTAUpdater:
         self.current_version = self.latest_version
 
         # save the current version
-        with open('version.json', 'w') as f:
-            json.dump({'version': self.current_version}, f)
+        with open(self.current_version, 'w') as f:
+            json.dump({self.current_version: self.current_version}, f)
         
         # free up some memory
         self.latest_code = None
