@@ -59,10 +59,7 @@ if __name__ == "__main__":
         setupNetwork()
         #get_ntp_time()
         get_mem_info()
-        if (checkForUpdates() == True):
-            sleep(0.25)
-            machine.reset()  # Reset the device to run the new code.
-        
+        checkForUpdates()
         
     except KeyboardInterrupt:
         print("Keyboard interrupt ctrl-c")
