@@ -51,12 +51,14 @@ def checkForUpdates():
     if (ota_updater.download_and_install_update_if_available() == True):
         needReset = True
     
+    del(ota_updater)
     print('\nUPDATING ota.py')
     firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "ota.py")
     if (ota_updater.download_and_install_update_if_available() == True):
         needReset = True
     
+    del(ota_updater)
     if (needReset == True):
         # Restart the device to run the new code.
         print("Restarting device...")
@@ -65,13 +67,18 @@ def checkForUpdates():
     
 if __name__ == "__main__":
     try:
+        from manage_files import ManageFiles
+        
+        mf = ManageFiles()
+        mf.printFileList()
+        
         setupNetwork()
         #get_ntp_time()
         get_mem_info()
-        checkForUpdates()
+        #checkForUpdates()
         
     except KeyboardInterrupt:
         print("Keyboard interrupt ctrl-c")
 
 
-print('Exit to REPLsfgh nertnuyetyumtyjm')
+print('Exit to REPL')
