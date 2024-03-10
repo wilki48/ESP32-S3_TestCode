@@ -48,10 +48,10 @@ def checkForUpdates():
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
     ota_updater.download_and_install_update_if_available()
     
-    #print('\nUPDATING ota.py')
-    #firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
-    #ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "ota.py")
-    #ota_updater.download_and_install_update_if_available()
+    print('\nUPDATING ota.py')
+    firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
+    ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "ota.py")
+    ota_updater.download_and_install_update_if_available()
     
     
 if __name__ == "__main__":
@@ -65,4 +65,4 @@ if __name__ == "__main__":
         print("Keyboard interrupt ctrl-c")
 
 
-print('Exit to REPL')
+print('Exit to REPLsfgh nertnuyetyumtyjm')

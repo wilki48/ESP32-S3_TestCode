@@ -22,7 +22,7 @@ class OTAUpdater:
         # get the current version (stored in version.json)
         print(f'*** versionFilename: {self.versionFilename}')
         if self.versionFilename in os.listdir():
-            print('Found version.json file')
+            print(f'Found {self.versionFilename} file')
             with open(self.versionFilename) as f:
                 self.current_version = json.load(f)['version']
             print(f"Current file version is '{self.current_version}'")
@@ -94,8 +94,8 @@ class OTAUpdater:
         self.current_version = self.latest_version
 
         # save the current version
-        with open(self.current_version, 'w') as f:
-            json.dump({self.current_version: self.current_version}, f)
+        with open(self.versionFilename, 'w') as f:
+            json.dump({'version': self.current_version}, f)
         
         # free up some memory
         self.latest_code = None
@@ -103,7 +103,7 @@ class OTAUpdater:
         # Overwrite the old code.
         print(f'filename: {self.filename}')
         os.rename('latest_code.py', self.filename)
-
+        
     def update_and_reset(self):
         """ Update the code and reset the device."""
 
@@ -113,13 +113,14 @@ class OTAUpdater:
         #os.rename('latest_code.py', self.filename)
 
         # Restart the device to run the new code.
-        print("Restarting device after update and reset...")
-        sleep(0.25)
-        machine.reset()  # Reset the device to run the new code.
+        #print("Restarting device after update and reset...")
+        #sleep(0.25)
+        #machine.reset()  # Reset the device to run the new code.
         
     def check_for_updates(self):
         """ Check if updates are available."""
         
+        print('def check_for_updates(self):')
         # Connect to Wi-Fi
         self.connect_wifi()
 
@@ -143,5 +144,8 @@ class OTAUpdater:
             if self.fetch_latest_code():
                 self.update_no_reset()
                 #self.update_and_reset()
+                print('=======Calling reset=======')
+                sleep(0.25)
+                machine.reset()  # Reset the device to run the new code.
         else:
             print('No new updates available.')
