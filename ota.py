@@ -144,8 +144,7 @@ class OTAUpdater:
             if self.fetch_latest_code():
                 self.update_no_reset()
                 #self.update_and_reset()
-                print('=======Calling reset=======')
-                sleep(0.25)
-                machine.reset()  # Reset the device to run the new code.
+                return True
         else:
             print('No new updates available.')
+            return False

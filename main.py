@@ -43,16 +43,25 @@ def get_mem_info():
 def checkForUpdates():
     from ota import OTAUpdater
     
+    needReset = False
+    
     print('\nUPDATING main.py')
     firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
-    ota_updater.download_and_install_update_if_available()
+    if (ota_updater.download_and_install_update_if_available() == True):
+        needReset = True
     
     print('\nUPDATING ota.py')
     firmware_url = "https://raw.githubusercontent.com/wilki48/ESP32-S3_TestCode/main/"
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "ota.py")
-    ota_updater.download_and_install_update_if_available()
+    if (ota_updater.download_and_install_update_if_available() == True):
+        needReset = True
     
+    if (needReset == True):
+        # Restart the device to run the new code.
+        print("Restarting device...")
+        sleep(0.25)
+        machine.reset()  # Reset the device to run the new code.
     
 if __name__ == "__main__":
     try:
