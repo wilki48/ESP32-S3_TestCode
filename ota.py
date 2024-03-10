@@ -20,11 +20,10 @@ class OTAUpdater:
         self.firmware_url = repo_url + filename                             # Removal of the 'main' branch to allow different sources
         print(f'self.firmware_url: {self.firmware_url}')
         # get the current version (stored in version.json)
-        print(f'*** Filename: {filename}')
-        print(f'*** versionFilename: {versionFilename}')
-        if 'version.json' in os.listdir():
+        print(f'*** versionFilename: {self.versionFilename}')
+        if self.versionFilename in os.listdir():
             print('Found version.json file')
-            with open('version.json') as f:
+            with open(self.versionFilename) as f:
                 self.current_version = json.load(f)['version']
             print(f"Current file version is '{self.current_version}'")
 
@@ -32,7 +31,7 @@ class OTAUpdater:
             print('Creating version.json file')
             self.current_version = "0"
             # save the current version
-            with open('version.json', 'w') as f:
+            with open(self.versionFilename, 'w') as f:
                 json.dump({'version': self.current_version}, f)
             
     def process_version_url(self, repo_url, filename):
