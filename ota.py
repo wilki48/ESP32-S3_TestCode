@@ -10,6 +10,7 @@ class OTAUpdater:
     Branch must be names main in github"""
     def __init__(self, ssid, password, repo_url, filename):
         self.filename = filename
+        self.versionFilename = filename.replace('.py', '_version.json')
         self.ssid = ssid
         self.password = password
         self.repo_url = repo_url
@@ -19,9 +20,8 @@ class OTAUpdater:
         self.firmware_url = repo_url + filename                             # Removal of the 'main' branch to allow different sources
         print(f'self.firmware_url: {self.firmware_url}')
         # get the current version (stored in version.json)
-        print(f'Filename: {filename}')
-        versionFilename = filename + 'version.json'
-        print(f'versionFilename: {versionFilename}')
+        print(f'*** Filename: {filename}')
+        print(f'*** versionFilename: {versionFilename}')
         if 'version.json' in os.listdir():
             print('Found version.json file')
             with open('version.json') as f:
